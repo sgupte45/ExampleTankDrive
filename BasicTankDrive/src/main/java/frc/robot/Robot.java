@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * This is a demo program showing the use of the DifferentialDrive class, specifically it contains
@@ -21,6 +22,9 @@ public class Robot extends TimedRobot {
 
   private final MotorController m_leftMotor = new PWMSparkMax(0);
   private final MotorController m_rightMotor = new PWMSparkMax(1);
+
+  private final XboxController m_driveController = new XboxController(0);
+  
 
   @Override
   public void robotInit() {
@@ -36,6 +40,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    m_myRobot.tankDrive(m_leftStick.getY(), m_rightStick.getY());
+    m_myRobot.tankDrive(m_driveController.getLeftY(), m_driveController.getRightX());
   }
 }
